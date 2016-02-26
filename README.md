@@ -52,5 +52,7 @@ The map size should not be more than 18000 to 18000 pixels (for Triton).
 ## Credits + Licence
 
 Rules based on default rendering rules for [Maperitive](http://maperitive.net), created by Igor Brejc, Updated by Michael <quelbs_at_gmail.com>
+
 Released under the Creative Commons Attribution-ShareAlike 3.0 License (http://creativecommons.org/licenses/by-sa/3.0/)
+
 Icons used: Map icons CC-0 from SJJB Management (http://www.sjjb.co.uk/mapicons)
