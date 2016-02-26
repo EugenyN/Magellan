@@ -37,15 +37,20 @@ generate-tiles minzoom=13 maxzoom=17
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <localTileFiles>
-	<name>Maperetive</name>
+	<name>Maperitive</name>
 	<sourceFolder>C:\Maperitive\Tiles</sourceFolder>
 	<backgroundColor>#000000</backgroundColor>
 </localTileFiles>
 ```
 
-The map size should not be more than 18000 to 18000 pixels (for Triton).
-
 * Transfer RMP maps to the GPS device through [VantagePoint](http://www.magellangps.com/Store/VantagePoint_Software/VantagePoint).
+
+### Hints
+
+* The map size should not be more than 18000 to 18000 pixels (for Triton).
+* It is more convenient to use only some zooms with Magellan GPS. For example 10, 12, 13, 15, 17.
+* Do not forget to disable Web Map source in Maperitive, before tiles generation.
+* If you need a large areas, such as the whole region, (or the whole country) you can download [the files](http://gis-lab.info/projects/osm_dump/) that have already been cut  into the areas ([other countries](http://download.geofabrik.de/))
 
 ## Authors and License
 
