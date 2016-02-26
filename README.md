@@ -47,7 +47,7 @@ The map size should not be more than 18000 to 18000 pixels (for Triton).
 
 * Transfer RMP maps to the GPS device through [VantagePoint](http://www.magellangps.com/Store/VantagePoint_Software/VantagePoint).
 
-## Credits + Licence
+## Authors and License
 
 Ruleset is written by Eugeny Novikov and released under the [Creative Commons Attribution-ShareAlike 3.0 License](http://creativecommons.org/licenses/by-sa/3.0/)
 
