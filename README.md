@@ -13,11 +13,11 @@ The ruleset was developed for using with the Magellan Triton / Explorist GPS for
 ## Screenshots
 
 ![zoom 13](/Screenshots/a.png?raw=true "13 zoom")
-![zoom 15](/Screenshots/b.png?raw=true "15 zoom")
-![zoom 17](/Screenshots/c.png?raw=true "17 zoom")
 
-[![zoom 17](/Screenshots/d.png)](/Screenshots/d.png) [![zoom 12](/Screenshots/e.png)](/Screenshots/e.png)
-[![zoom 10](/Screenshots/f.png)](/Screenshots/f.png)
+Click to view.
+
+[![zoom 15](/Screenshots/b-th.png)](/Screenshots/b.png) [![zoom 17](/Screenshots/c-th.png)](/Screenshots/c.png)
+[![zoom 12](/Screenshots/e-th.png)](/Screenshots/e.png) [![zoom 10](/Screenshots/f-th.png)](/Screenshots/f.png)
 
 
 ## Map creation for Magellan Triton/Explorist
