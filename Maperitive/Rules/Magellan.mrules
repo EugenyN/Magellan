@@ -6,8 +6,6 @@
 // Released under the Creative Commons Attribution-ShareAlike 3.0 License (http://creativecommons.org/licenses/by-sa/3.0/)
 // Icons used: Map icons CC-0 from SJJB Management (http://www.sjjb.co.uk/mapicons)
 
-// version 24/02/2016
-
 features
 	points, areas
 		parking : amenity=parking
@@ -47,7 +45,7 @@ features
 		tower : man_made=tower OR man_made=water_tower
 		resort : leisure=resort
 
-	areas
+	areas	
 		beach : natural=beach
 		building : building
 		bridge : man_made=bridge
@@ -168,7 +166,7 @@ features
 		place hamlet : place=hamlet
 		place locality: place=locality
 		place isolated_dwelling : place=isolated_dwelling
-		place suburb : place=suburb
+		place suburb : place=suburb	
 		diy : shop=doityourself
 		hair dresser : shop=hairdresser
 		supermarket : shop=supermarket
@@ -264,24 +262,24 @@ rules
 
 			if : *city
 				define
-					font-size : 6:8;14:20
+					font-size : 6:9;14:20
 					min-zoom : 6
 					max-zoom : 14
 					placement-value : 1000
 			elseif : *town
 				define
-					font-size : 9:10;12:15;20:25
-					min-zoom : 9
+					font-size : 9:11;12:15;20:25
+					min-zoom : 8
 					placement-value : 20
 			elseif : *village
 				define
-					font-size : 10:10;12:15;20:25
+					font-size : 10:11;12:15;20:25
 					min-zoom : 10
 					placement-value : 1
 			elseif : *hamlet
 				define
-					font-size : 10:10;12:12;20:20
-					min-zoom : 10
+					font-size : 10:11;12:12;20:20
+					min-zoom : 11
 					placement-value : 1
 			elseif : *locality
 				define
@@ -290,14 +288,14 @@ rules
 					placement-value : 1
 			elseif : *isolated_dwelling
 				define
-					font-size : 10:10;12:12;20:20
-					min-zoom : 10	
+					font-size : 10:11;12:12;20:20
+					min-zoom : 12	
 					placement-value : 1
 			elseif : *suburb
 				define
 					font-size : 12:12;20:20
 					min-zoom : 12
-					text-color : white black 50%
+					text-color : white black 60%
 					placement-value : 10
 			draw : text
 		if : aerialway station
@@ -317,7 +315,7 @@ rules
 			font-weight : bold
 			text-max-width : 1000
 			text-align-horizontal : near
-			min-zoom : 13
+			min-zoom : 14
 			font-size : 15:10;20:20
 			text-color : white black 50%
 //			placement-value : 10
@@ -438,18 +436,17 @@ rules
 			font-size : 12:9;20:15
 		if : forest
 			define
-				min-zoom : 9
+				min-zoom : 8
 				fill-color : #8DC56C
-				fill-opacity : 1
+				//fill-opacity : 1
+//		elseif : place*
+//			define
+//				min-zoom : 8.5
+//				max-zoom : 10
+//				fill-color : #C6CF9C
 		elseif : scrub 
 			define
 				min-zoom : 8.5
-				//fill-color : #b0d080
-				//fill-opacity : 0.5
-				//fill-hatch : cross
-				//fill-hatch-color : #b0d080
-				//fill-hatch-opacity : 0.3
-				//line-style : none
 				fill-texture : Textures/Magellan/scrub2.png
 		elseif : wetland
 			define
@@ -515,6 +512,7 @@ rules
 				fill-hatch-opacity : 1				
 		elseif : meadow
 			define
+				min-zoom : 11
 				fill-color : #D1EDAB
 				line-color : #ABDE96
 				line-style : solid
@@ -558,6 +556,7 @@ rules
 				line-color : #F4A19E
 		elseif : landuse industrial
 			define
+				min-zoom : 11
 				fill-color : #ADAD9A
 		elseif : wastewater plant
 			define
@@ -678,13 +677,13 @@ rules
 				line-width : 6:1;9:3;10:6
 		elseif : boundary province
 			define
-				min-zoom : 4
-				line-width : 4:1;11:3
+				min-zoom : 10
+				line-width : 10:2.5;11:3
 				line-style : dash
 		elseif : boundary municipal
 			define
-				min-zoom : 12
-				line-width : 12:1;14:2
+				min-zoom : 13
+				line-width : 2
 				line-style : dash
 		for : natural=coastline OR maritime=yes
 			define
@@ -693,6 +692,7 @@ rules
 
 	target : nature reserve
 		define
+			min-zoom : 11
 			line-color : #8DC56C black 20%
 			line-opacity : 0.5
 			line-width : 3
@@ -835,7 +835,7 @@ rules
 		define
 			min-zoom : 13
 			line-style : dashlong
-			line-color : white
+			line-color : white black 30%
 			line-width : 2
 			border-style : solid
 			border-color : black
@@ -850,7 +850,7 @@ rules
 			min-zoom : 6
 			max-zoom : 13
 			line-style : solid
-			line-color : white black 30%
+			line-color : white black 60%
 			line-width : 6:1;8:1;12:1.5
 		draw : line
 	target : railway*
@@ -878,8 +878,8 @@ rules
 
 	target : highway construction
 		define
-			min-zoom : 13
-			line-width : 13:2;15:4;18:10
+			min-zoom : 11
+			line-width : 11:2;13:4;15:6;18:10
 			line-style : dot
 			line-color : gray
 		for : construction=motorway OR construction=motorway_link
@@ -970,7 +970,7 @@ rules
 		if : *motorway*
 			if : *link
 				define
-					line-width : 7:1;12:4;13:5;16:6;18:7
+					line-width : 7:2;12:4;13:5;16:6;18:7
 			else
 				define
 					line-width : 7:1;9:2;12:4;13:8;16:12;18:13
@@ -998,7 +998,7 @@ rules
 			draw : line
 			define
 				text : ref " " name
-				font-size : 13:8;18:18
+				//font-size : 13:8;18:18
 				min-zoom : 14
 				max-zoom : 20
 			draw : text
@@ -1030,7 +1030,7 @@ rules
 			define
 				min-zoom : 11
 				line-color : #009933
-				line-width : 7:1;11:3;13:3;15:10;18:12
+				line-width : 7:2;11:3;13:3;15:10;18:12
 				border-style : solid
 				border-color : black
 				border-width : 13:40%;15:25%
@@ -1054,7 +1054,7 @@ rules
 			draw : line
 			define
 				text : ref " " name
-				font-size : 13:6;18:14
+				//font-size : 13:6;18:14
 				min-zoom : 14
 				max-zoom : 20
 			draw : text
@@ -1086,7 +1086,7 @@ rules
 			define
 				min-zoom : 11
 				line-color : #C81820
-				line-width : 7:1;11:3;12:3;15:10;18:12
+				line-width : 7:2;11:3;12:3;15:10;18:12
 				border-style : solid
 				border-color : black
 				border-width : 13:40%;15:25%
@@ -1110,7 +1110,7 @@ rules
 			draw : line
 			define
 				text : ref " " name
-				font-size : 13:6;18:14
+				//font-size : 13:6;18:14
 				min-zoom : 14
 				max-zoom : 20
 			draw : text
@@ -1171,8 +1171,8 @@ rules
 			draw : line
 			define
 				text : ref " " name
-				font-size : 13:6;18:14
-				min-zoom : 14
+				//font-size : 13:6;18:14
+				min-zoom : 15
 				max-zoom : 20
 			draw : text
 			for : junction=roundabout OR tunnel=yes OR bridge=yes OR highway=*link
@@ -1229,13 +1229,13 @@ rules
 				border-style : none
 			draw : line
 			define
-				min-zoom : 14
+				min-zoom : 15
 				max-zoom : 20
 			draw : text
 			
 		elseif : *service
 			define
-				min-zoom : 13.5
+				min-zoom : 14
 				line-color : white
 				line-width : 13:1.5;15:3;18:5
 				border-style : solid
@@ -1264,8 +1264,8 @@ rules
 				min-zoom : 15
 			draw : text
 			define
-				min-zoom : 10
-				max-zoom : 13
+				min-zoom : 13
+				max-zoom : 14
 				border-style : none
 				line-color : black
 			draw : line
@@ -1274,10 +1274,10 @@ rules
 				define
 					min-zoom : 13
 					line-color : #EDEDED
-					line-width : 7:0.6;9:1;10:1.2;12:2.5;13:3;16:5;18:6
+					line-width : 10:1;13:2;15:5;18:13
 					border-style : solid
 					border-color : black
-					border-width : 15%
+					border-width : 13:40%; 15:25%
 				for : tunnel=yes
 					define
 						border-style : dot
@@ -1286,7 +1286,13 @@ rules
 						border-color : #000
 				draw : line
 				draw : text
-
+				define
+					min-zoom : 10
+					max-zoom : 13
+					border-style : none
+					line-color : black
+				draw : line
+			
 		elseif : $regex("(.*residential)|(.*unclassified)")
 			define
 				min-zoom : 13
@@ -1326,7 +1332,7 @@ rules
 			define
 				min-zoom : 13
 				line-color : white
-				line-width : 12:1.5;13:2;15:5;18:13
+				line-width : 10:1;13:2;15:5;18:13
 			draw : line
 			define
 				line-color : white black 10%
@@ -1641,13 +1647,14 @@ rules
 			define
 				line-style: dash
 		draw : line
-		define
-			min-zoom:12
-			font-size:13:11;16:15
-			font-style : italic
-			font-weight : bold
-			text-color : #78C1C1 black 10%
-		draw:text
+		for : NOT natural=valley
+			define
+				min-zoom:12
+				font-size:13:11;16:15
+				font-style : italic
+				font-weight : bold
+				text-color : #78C1C1 black 10%
+			draw:text
 		
 	target : drystream
 		define
@@ -1656,13 +1663,14 @@ rules
 			line-width : 13:2;15:3
 			line-style: dash
 		draw : line
-		define
-			min-zoom:13
-			font-size:13:11;16:15
-			font-style : italic
-			font-weight : bold
-			text-color : #78C1C1 black 10%
-		draw:text
+		for : NOT natural=valley
+			define
+				min-zoom:13
+				font-size:13:11;16:15
+				font-style : italic
+				font-weight : bold
+				text-color : #78C1C1 black 10%
+			draw:text
 
 	target : valley
 		//define

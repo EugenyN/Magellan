@@ -60,6 +60,6 @@ generate-tiles minzoom=13 maxzoom=17
 
 Ruleset is written by Eugeny Novikov and released under the [Creative Commons Attribution-ShareAlike 3.0 License](http://creativecommons.org/licenses/by-sa/3.0/)
 
-Rules based on default rendering rules for [Maperitive](http://maperitive.net), created by Igor Brejc, Updated by Michael <quelbs_at_gmail.com>
+Rules based on default rendering rules for [Maperitive](http://maperitive.net), created by Igor Brejc, Updated by Michael <quelbs_at_gmail.com> and Ole Nielsen
 
 Icons used: Map icons CC-0 from [SJJB Management](http://www.sjjb.co.uk/mapicons)
