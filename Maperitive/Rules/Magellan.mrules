@@ -6,6 +6,8 @@
 // Released under the Creative Commons Attribution-ShareAlike 3.0 License (http://creativecommons.org/licenses/by-sa/3.0/)
 // Icons used: Map icons CC-0 from SJJB Management (http://www.sjjb.co.uk/mapicons)
 
+// version 24/02/2016
+
 features
 	points, areas
 		parking : amenity=parking
@@ -167,6 +169,7 @@ features
 		place locality: place=locality
 		place isolated_dwelling : place=isolated_dwelling
 		place suburb : place=suburb	
+		//place allotments : place=allotments
 		diy : shop=doityourself
 		hair dresser : shop=hairdresser
 		supermarket : shop=supermarket
@@ -262,19 +265,19 @@ rules
 
 			if : *city
 				define
-					font-size : 6:9;14:20
-					min-zoom : 6
+					font-size : 5:12;14:20
+					min-zoom : 5
 					max-zoom : 14
 					placement-value : 1000
 			elseif : *town
 				define
-					font-size : 9:11;12:15;20:25
+					font-size : 9:12;12:15;20:25
 					min-zoom : 8
 					placement-value : 20
 			elseif : *village
 				define
-					font-size : 10:11;12:15;20:25
-					min-zoom : 10
+					font-size : 9:9;10:11;12:13;20:25
+					min-zoom : 9
 					placement-value : 1
 			elseif : *hamlet
 				define
@@ -438,7 +441,6 @@ rules
 			define
 				min-zoom : 8
 				fill-color : #8DC56C
-				//fill-opacity : 1
 //		elseif : place*
 //			define
 //				min-zoom : 8.5
@@ -446,7 +448,7 @@ rules
 //				fill-color : #C6CF9C
 		elseif : scrub 
 			define
-				min-zoom : 8.5
+				min-zoom : 9
 				fill-texture : Textures/Magellan/scrub2.png
 		elseif : wetland
 			define
@@ -469,42 +471,51 @@ rules
 				fill-color : #CEAD87
 		elseif : farmyard
 			define
-				min-zoom : 12
+				min-zoom : 10
 				fill-color : #DCBE91 white 25%
 		elseif : fell
 			define
+				min-zoom : 11
 				fill-color : #C5FF5B black 10%
 		elseif : water
 			define
+				min-zoom : 8
 				fill-color : #009FDE
 		elseif : academic
 			define
+				min-zoom : 11
 				fill-color : #F0F0D8
 				line-color : #E5D2CC
 				line-style : solid
 		elseif : kindergarten
 			define
+				min-zoom : 11
 				fill-color : #F0F0D8
 				line-color : #E5D2CC
 				line-style : solid
 		elseif : hospital
 			define
+				min-zoom : 11
 				fill-color : #DDBCB1
 				line-color : #E5D2CC
 				line-style : solid
 		elseif : church
 			define
+				min-zoom : 11
 				fill-color : #DDBCB1
 				line-color : #E5D2CC
 				line-style : solid
 		elseif : residential area
 			define
+				min-zoom : 9
 				fill-color : #C6CF9C
 		elseif : grass
 			define
+				min-zoom : 11
 				fill-color : #D1EDAB
 		elseif : allotments
 			define
+				min-zoom : 9
 				fill-color : #C8B084
 				fill-opacity : 0.5
 				fill-hatch : horizontal
@@ -512,13 +523,14 @@ rules
 				fill-hatch-opacity : 1				
 		elseif : meadow
 			define
-				min-zoom : 11
+				min-zoom : 9
 				fill-color : #D1EDAB
 				line-color : #ABDE96
 				line-style : solid
 				fill-opacity : 0.7
 		elseif : tidalflat
 			define
+				min-zoom : 11
 				fill-color : #ddbb00
 				fill-hatch : horizontal
 				fill-hatch-opacity : 0
@@ -527,13 +539,16 @@ rules
 				line-style : solid
 		elseif : park
 			define
+				min-zoom : 11
 				fill-color : #C0F6B0
 				font-size : 12:9;20:15
 		elseif : leisure garden
 			define
+				min-zoom : 11	
 				fill-color : #CFECA8
 		elseif : cemetery
 			define
+				min-zoom : 11
 				//fill-color : #9CC099
 				//fill-opacity : 0.7
 				fill-texture : Textures/Magellan/cemetery.png
@@ -543,15 +558,19 @@ rules
 				fill-color : #b5e2b5
 		elseif : leisure pitch
 			define
+				min-zoom : 11
 				fill-color : #89D2AE
 		elseif : track
 			define
+				min-zoom : 11
 				fill-color : #74DCBA
 		elseif : village green
 			define
+				min-zoom : 11
 				fill-color : #CFECA8
 		elseif : landuse retail
 			define
+				min-zoom : 11
 				fill-color : #F0D9D9
 				line-color : #F4A19E
 		elseif : landuse industrial
@@ -560,9 +579,11 @@ rules
 				fill-color : #ADAD9A
 		elseif : wastewater plant
 			define
+				min-zoom : 11
 				fill-color : #DFD1D6
 		elseif : commercial area
 			define
+				min-zoom : 11
 				fill-color : #EFC8C8
 		elseif : landuse construction
 			define
@@ -583,17 +604,21 @@ rules
 				line-style : solid
 		elseif : aeroway*
 			define
+				min-zoom : 11
 				fill-color : #E9D1FE
 		elseif : orchard
 			define
+				min-zoom : 9
 				fill-color : #9fd790
 		elseif : aerodrome
 			define
+				min-zoom : 9
 				fill-color : #e9e8e3
 				line-style : solid
 				line-color : #b3b3b0 black 10%
 		elseif : quarry
 			define
+				min-zoom : 11
 				fill-color : white
 				line-style : solid
 				line-color : #b3b3b0 black 10%
@@ -601,6 +626,7 @@ rules
 				fill-hatch-color : #cccccc
 		elseif : glacier
 			define
+				min-zoom : 8
 				fill-color : #DDECEC
 				line-style : dash
 				line-color : #DDECEC black 10%
@@ -611,26 +637,43 @@ rules
 		
 		define
 			min-zoom : 15
-			font-size : 12:9;20:15
+			font-size : 12:10;15:15
 		
 		if : academic
 			define
 				min-zoom:17
-		if : kindergarten
+		elseif : kindergarten
 			define 
 				min-zoom:17
-		if : hospital
+		elseif : hospital
 			define 
 				min-zoom:17		
-		if : landuse industrial
+		elseif : landuse industrial
 			define 
 				min-zoom:17	
-		if : landuse construction
+		elseif : landuse construction
 			define 
 				min-zoom:17					
-		if : park
+		elseif : park
 			define 
-				min-zoom:17					
+				min-zoom:17	
+		elseif : water
+			define 
+				text-color : #009FDE
+				font-style : italic
+				min-zoom:12		
+		elseif : forest
+			define 
+				text-color : #8DC56C
+				min-zoom:12		
+		elseif : aerodrome
+			define 
+				min-zoom:12	
+		elseif : allotments
+			define 
+				min-zoom:13
+				//font-size : 13:12;20:20
+				placement-value : 1
 		draw : text
 
 	target : $regex("(sports centre)|(stadium)")
@@ -674,7 +717,7 @@ rules
 			line-opacity : 0.5
 		if : boundary country
 			define
-				line-width : 6:1;9:3;10:6
+				line-width : 6:2;9:3;10:6
 		elseif : boundary province
 			define
 				min-zoom : 10
@@ -697,10 +740,11 @@ rules
 			line-opacity : 0.5
 			line-width : 3
 			line-style : dash
+		draw : line
+		define
 			font-size : 10:10;12:15;20:25
 			text-color : green
 			font-weight : normal
-		draw : line
 		draw : text
 
 	target : peak
@@ -797,8 +841,8 @@ rules
 			fill-color : #C0F6B0
 		draw : fill
 		define
+			min-zoom : 13		
 			font-size : 12:9;20:15
-			min-zoom : 15
 		draw : text
 		
 	target:aerialway *
@@ -847,7 +891,7 @@ rules
 				border-width : 1.5
 		draw : line
 		define
-			min-zoom : 6
+			min-zoom : 7
 			max-zoom : 13
 			line-style : solid
 			line-color : white black 60%
@@ -992,14 +1036,14 @@ rules
 					line-end-cap : none
 			draw : line
 			define
-				min-zoom : 7
+				min-zoom : 6
 				max-zoom : 11
 				border-style : none
 			draw : line
 			define
 				text : ref " " name
 				//font-size : 13:8;18:18
-				min-zoom : 14
+				min-zoom : 10
 				max-zoom : 20
 			draw : text
 			for : tunnel=yes OR bridge=yes
@@ -1048,14 +1092,14 @@ rules
 					border-width : 45%
 			draw : line
 			define
-				min-zoom : 7
+				min-zoom : 6
 				max-zoom : 11
 				border-style : none
 			draw : line
 			define
 				text : ref " " name
 				//font-size : 13:6;18:14
-				min-zoom : 14
+				min-zoom : 10
 				max-zoom : 20
 			draw : text
 			for : junction=roundabout OR tunnel=yes OR bridge=yes OR highway=*link
@@ -1066,6 +1110,7 @@ rules
 					min-zoom : 11
 					max-zoom : 19
 			define
+				min-zoom : 12
 				font-family : Tahoma
 				text-align-horizontal : center
 				text-align-vertical : center
@@ -1081,7 +1126,7 @@ rules
 				shield-padding-top : 5
 				shield-padding-bottom : 5
 				shield-resize-mode : free
-//			draw : shield
+			//draw : shield
 		elseif : *primary*
 			define
 				min-zoom : 11
@@ -1104,8 +1149,9 @@ rules
 					border-width : 45%
 			draw : line
 			define
-				min-zoom : 7
+				min-zoom : 6
 				max-zoom : 11
+				line-width : 6:1;8:2
 				border-style : none
 			draw : line
 			define
@@ -1144,7 +1190,7 @@ rules
 			define
 				min-zoom : 11
 				line-color : #FF8208
-				line-width : 10:2;11:3;13:3;15:10;18:12
+				line-width : 8:1.5;10:2;11:3;13:3;15:10;18:12
 				border-style : solid
 				border-color : black
 				border-width : 13:40%;15:25%
@@ -1165,7 +1211,7 @@ rules
 					border-width : 45%
 			draw : line
 			define
-				min-zoom : 8.5
+				min-zoom : 8
 				max-zoom : 12
 				border-style : none
 			draw : line
@@ -1627,15 +1673,16 @@ rules
 
 	target : river
 		define
+			min-zoom : 7
 			line-color : #009FDE
 			line-width : 7:1;12:2;14:5
 		draw : line
 		define
-			min-zoom:13
-			font-size:13:10;16:15
+			min-zoom:12
+			font-size:13:12;16:15
 			font-style : italic
 			font-weight : bold
-			text-color : #78C1C1 black 10%
+			text-color : #009FDE
 		draw:text
 		
 	target : stream
@@ -1653,7 +1700,7 @@ rules
 				font-size:13:11;16:15
 				font-style : italic
 				font-weight : bold
-				text-color : #78C1C1 black 10%
+				text-color : #009FDE
 			draw:text
 		
 	target : drystream
