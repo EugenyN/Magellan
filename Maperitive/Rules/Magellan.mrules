@@ -66,7 +66,7 @@ features
 		meadow : natural=meadow OR landuse=meadow OR natural=grassland
 		tidalflat : natural=wetland AND wetland=tidalflat
 		playground : leisure=playground
-		car park: amenity=parking
+		//car park: amenity=parking
 		cemetery : amenity=grave_yard OR landuse=cemetery
 		military : landuse=military OR military=barracks
 		substation : power=substation OR power=sub_station
@@ -88,7 +88,7 @@ features
 		aeroway apron : aeroway=apron
 		aeroway terminal : aeroway=terminal
 		highway pedestrian : (highway=pedestrian OR highway=footway) AND area=yes
-		orchard : landuse=orchard
+		orchard : landuse=orchard OR landuse=vineyard
 		quarry : landuse=quarry
 		forest : landuse=forest OR natural=wood OR landcover=trees
 		park : leisure=park
@@ -345,7 +345,7 @@ rules
 			placement-value : 0.05
 		draw : text
 
-	target : car park
+	target : parking
 		define
 			min-zoom : 12
 			line-style : none
@@ -353,6 +353,7 @@ rules
 		draw : fill
 		define
 			min-zoom : 15
+			font-size : 12:9;20:15
 		draw : text
 
 	target : building
@@ -848,7 +849,7 @@ rules
 		define
 			min-zoom : 6
 			max-zoom : 13
-			line-style : none
+			line-style : solid
 			line-color : white black 30%
 			line-width : 6:1;8:1;12:1.5
 		draw : line
@@ -969,13 +970,13 @@ rules
 		if : *motorway*
 			if : *link
 				define
-					line-width : 7:1;12:3;13:4;16:5;18:6
+					line-width : 7:1;12:4;13:5;16:6;18:7
 			else
 				define
-					line-width : 7:1;9:2;12:3;13:7;16:10;18:12
+					line-width : 7:1;9:2;12:4;13:8;16:12;18:13
 			define
-				min-zoom : 12
-				line-color : #849BBD
+				min-zoom : 11
+				line-color : #335BAE
 				border-style : solid
 				border-color : black
 				border-width : 13:40%;15:25%
@@ -990,21 +991,15 @@ rules
 					line-start-cap : none
 					line-end-cap : none
 			draw : line
-			for : highway=motorway
-				define
-					min-zoom : 12
-					line-width : 7:0.3;12:1;13:1.5;16:1.7;18:3;19:6
-					line-color : #F5E756
-				draw : line
 			define
 				min-zoom : 7
-				max-zoom : 12
+				max-zoom : 11
 				border-style : none
 			draw : line
 			define
 				text : ref " " name
 				font-size : 13:8;18:18
-				min-zoom : 12
+				min-zoom : 14
 				max-zoom : 20
 			draw : text
 			for : tunnel=yes OR bridge=yes
@@ -1015,15 +1010,16 @@ rules
 					min-zoom : 10
 					max-zoom : 19
 			define
+				min-zoom : 12
 				font-family : Tahoma
 				text-align-horizontal : center
 				text-align-vertical : center
 				text : ref
-				font-size : 15
+				font-size : 10
 				text-color : #fcfcfb
 				text-halo-width : 0
 				shape : custom
-				shape-def : p:#809bc0;pw:5;f:#809bc0;m:-10,-10;l:10,-10;a:10,10,10,10;l:-10,10;a:10,10,-10,-10;z;p:#fcfcfb;pw:2;m:-10,-10;l:10,-10;a:10,10,10,10;l:-10,10;a:10,10,-10,-10;z
+				shape-def : p:#335BAE;pw:5;f:#335BAE;m:-10,-10;l:10,-10;a:10,10,10,10;l:-10,10;a:10,10,-10,-10;z;p:#fcfcfb;pw:2;m:-10,-10;l:10,-10;a:10,10,10,10;l:-10,10;a:10,10,-10,-10;z
 				shield-padding-left : 5
 				shield-padding-right : 5
 				shield-padding-top : 7
@@ -1033,15 +1029,15 @@ rules
 		elseif : *trunk*
 			define
 				min-zoom : 11
-				line-color : #96D296
-				line-width : 11:3;13:3;15:10;18:12
+				line-color : #009933
+				line-width : 7:1;11:3;13:3;15:10;18:12
 				border-style : solid
 				border-color : black
 				border-width : 13:40%;15:25%
-			for : oneway=yes
-				define
-					line-width : 11:1.5;12:1.5;15:7;18:12;19:24
-					border-width : 22%
+//			for : oneway=yes
+//				define
+//					line-width : 11:1.5;12:1.5;15:7;18:12;19:24
+//					border-width : 22%
 			for : tunnel=yes
 				define
 					border-style : dot
@@ -1053,7 +1049,7 @@ rules
 			draw : line
 			define
 				min-zoom : 7
-				max-zoom : 12
+				max-zoom : 11
 				border-style : none
 			draw : line
 			define
@@ -1090,14 +1086,14 @@ rules
 			define
 				min-zoom : 11
 				line-color : #C81820
-				line-width : 11:3;12:3;15:10;18:12
+				line-width : 7:1;11:3;12:3;15:10;18:12
 				border-style : solid
 				border-color : black
 				border-width : 13:40%;15:25%
-			for : oneway=yes
-				define
-					line-width : 11:1.5;12:1.5;15:7;18:12;19:24
-					border-width : 22%
+//			for : oneway=yes
+//				define
+//					line-width : 11:1.5;12:1.5;15:7;18:12;19:24
+//					border-width : 22%
 			for : tunnel=yes
 				define
 					border-style : dot
@@ -1152,10 +1148,10 @@ rules
 				border-style : solid
 				border-color : black
 				border-width : 13:40%;15:25%
-			for : oneway=yes
-				define
-					line-width : 11:1.5;12:1.5;15:7;18:12;19:24
-					border-width : 22%
+//			for : oneway=yes
+//				define
+//					line-width : 11:1.5;12:1.5;15:7;18:12;19:24
+//					border-width : 22%
 			for : @isMatch (surface,"unpaved|gravel|sand|earth|ground|grass")
 				define
 					border-style: dash 
@@ -1212,10 +1208,10 @@ rules
 				border-style : solid
 				border-color : black
 				border-width : 13:40%;15:25%
-			for : oneway=yes
-				define
-					line-width : 10:2;12:2;15:7;18:10;19:21
-					border-width : 25%
+//			for : oneway=yes
+//				define
+//					line-width : 10:2;12:2;15:7;18:10;19:21
+//					border-width : 25%
 			for : @isMatch (surface,"unpaved|gravel|sand|earth|ground|grass")
 				define
 					border-style: dash 
