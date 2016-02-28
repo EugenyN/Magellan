@@ -371,8 +371,9 @@ rules
 				fill-color : #99bbcc
 		draw : fill
 		define
+			min-zoom : 15		
 			line-style : solid
-			min-zoom : 16
+			line-width : 15:1;17:2
 		for : building=shed OR building=garage OR building=garages
 			define
 				line-style : none
@@ -508,7 +509,7 @@ rules
 		elseif : residential area
 			define
 				min-zoom : 9
-				fill-color : #C6CF9C
+				fill-color : #DEDEC4
 		elseif : grass
 			define
 				min-zoom : 11
@@ -637,7 +638,7 @@ rules
 		
 		define
 			min-zoom : 15
-			font-size : 12:10;15:15
+			font-size : 12:10;15:13
 		
 		if : academic
 			define
@@ -674,6 +675,8 @@ rules
 				min-zoom:13
 				//font-size : 13:12;20:20
 				placement-value : 1
+		else
+			stop
 		draw : text
 
 	target : $regex("(sports centre)|(stadium)")
@@ -1467,7 +1470,7 @@ rules
 		elseif : *footway
 			for : NOT area
 				define
-					min-zoom : 13
+					min-zoom : 14
 					line-color : red
 					line-width : 13:2;15:2;18:3
 					line-style : dot
@@ -1481,6 +1484,13 @@ rules
 
 				draw : line
 				draw : text
+				define
+					min-zoom : 12
+					max-zoom : 14
+					line-width : 12:1;13:1.5
+					line-style : solid
+				draw : line
+			
 		elseif : *cycleway
 			define
 				min-zoom : 13
@@ -1500,10 +1510,16 @@ rules
 					border-opacity : 1
 			draw : line
 			draw : text
+			define
+				min-zoom : 12
+				max-zoom : 14
+				line-width : 12:1;13:1.5
+				line-style : solid
+			draw : line
 			
 		elseif : *path
 			define
-				min-zoom : 13
+				min-zoom : 14
 				line-color : black
 				line-width : 13:2;15:2;18:3
 				line-style : dot
@@ -1517,6 +1533,12 @@ rules
 
 			draw : line
 			draw : text
+			define
+				min-zoom : 12
+				max-zoom : 14
+				line-width : 12:1;13:1.5
+				line-style : solid
+			draw : line
 		else
 			stop
 
@@ -1983,6 +2005,7 @@ rules
 			shape-size : 13:1;15:2;17:4
 		draw : shape
 		define
+			min-zoom : 17
 			font-size : 12:9;20:15
 			text-offset-vertical : 250%
 		draw : text
@@ -2079,12 +2102,12 @@ rules
 		draw : icon
 		
 	target : amenity*
-		define
-			min-zoom : 17
-			text-color : #856951
-			text-offset-vertical : 150%
-			font-size : 12:9;20:15
-		draw : text
+		//define
+		//	min-zoom : 17
+		//	text-color : #856951
+		//	text-offset-vertical : 150%
+		//	font-size : 12:9;20:15
+		//draw : text
 
 		define
 			min-zoom : 16
