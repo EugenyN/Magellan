@@ -374,6 +374,7 @@ rules
 			min-zoom : 15		
 			line-style : solid
 			line-width : 15:1;17:2
+			line-color : black
 		for : building=shed OR building=garage OR building=garages
 			define
 				line-style : none
@@ -1286,10 +1287,10 @@ rules
 			define
 				min-zoom : 14
 				line-color : white
-				line-width : 13:1.5;15:3;18:5
+				line-width : 13:1.5;15:2;18:5
 				border-style : solid
 				border-color : black
-				border-width : 13:0%; 14:15%
+				border-width : 13:0%; 15:50%; 17:40%
 			for : @isMatch (surface,"unpaved|gravel|sand|earth|ground|grass")
 				define
 					border-style: dash 
@@ -1794,7 +1795,7 @@ rules
 		define
 			icon-image : icons/SJJB/png/transport_bus_stop.n.32.png
 			min-zoom : 14
-			icon-width : 14:8;15:16
+			icon-width : 14:8;15:14;17:16
 		draw : icon
 		
 	target: railway station
@@ -1843,7 +1844,7 @@ rules
 	target: hospital
 		define
 			icon-image : icons/SJJB/png/health_hospital.n.32.png
-			min-zoom : 15
+			min-zoom : 16
 			icon-width : 16
 			font-size : 12:9;20:15
 		draw : icon
@@ -1919,12 +1920,12 @@ rules
 		draw : icon
 		
 	target: bank
-		define
-			min-zoom : 17
-			text-color : #000000
-			text-offset-vertical : 150%
-			font-size : 12:9;20:15
-		draw : text
+		//define
+		//	min-zoom : 17
+		//	text-color : #000000
+		//	text-offset-vertical : 150%
+		//	font-size : 12:9;20:15
+		//draw : text
 		define
 			icon-image : icons/SJJB/png/money_bank2.n.32.png
 			min-zoom : 16
