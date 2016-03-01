@@ -34,6 +34,7 @@ features
 		tourism museum : tourism=museum
 		tourism attraction : tourism=attraction
 		tourism picnic_site : tourism=picnic_site
+		tourism zoo : tourism=zoo
 		amenity bench : amenity=bench
 		amenity shelter : amenity=shelter
 		amenity pub : amenity=pub
@@ -60,6 +61,7 @@ features
 		grass : landuse=grass OR landcover=grass
 		fell : natural=fell
 		glacier : natural=glacier
+		bare_rock : natural=bare_rock
 		nature reserve : boundary=national_park OR leisure=nature_reserve
 		allotments : landuse=allotments
 		kindergarten : amenity=kindergarten
@@ -79,6 +81,7 @@ features
 		leisure garden : leisure=garden
 		leisure pitch : leisure=pitch
 		leisure golf : leisure=golf_course
+		park : leisure=park
 		academic : node[@isOneOf(amenity, university, college, school)] area[@isOneOf(amenity, university, college, school)]
 		landuse retail : landuse=retail
 		landuse industrial : landuse=industrial
@@ -88,10 +91,10 @@ features
 		aeroway apron : aeroway=apron
 		aeroway terminal : aeroway=terminal
 		highway pedestrian : (highway=pedestrian OR highway=footway) AND area=yes
+		highway platform : area[highway=platform OR railway=platform]
 		orchard : landuse=orchard OR landuse=vineyard
 		quarry : landuse=quarry
 		forest : landuse=forest OR natural=wood OR landcover=trees
-		park : leisure=park
 	lines
 		oneway : oneway=yes OR oneway=true OR oneway=-1
 		coastline : natural=coastline
@@ -105,7 +108,6 @@ features
 		tree_row : natural=tree_row
 		railway rail : railway=rail
 		railway lightrail : railway=light_rail OR railway=tram
-		platform : railway=platform OR public_transport=platform
 		line barrier : barrier=wall OR barrier=fence OR barrier=retaining_wall 
 		gully : natural=gully
 		highway motorway : highway=motorway
@@ -169,7 +171,6 @@ features
 		place locality: place=locality
 		place isolated_dwelling : place=isolated_dwelling
 		place suburb : place=suburb	
-		//place allotments : place=allotments
 		diy : shop=doityourself
 		hair dresser : shop=hairdresser
 		supermarket : shop=supermarket
@@ -179,6 +180,7 @@ features
 		cafe : amenity=cafe
 		pharmacy : amenity=pharmacy
 		peak : natural=peak
+		cave_entrance : natural=cave_entrance
 		powertower : power=tower
 		powerpole : power=pole
 		info : information=guidepost
@@ -353,7 +355,7 @@ rules
 			fill-color : #F6EEB7
 		draw : fill
 		define
-			min-zoom : 15
+			min-zoom : 16
 			font-size : 12:9;20:15
 		draw : text
 
@@ -428,12 +430,20 @@ rules
 		for : area
 			define
 				min-zoom : 14
-				line-width : 1
+				line-width : 15.5:1; 16:2
 				fill-color : #EDEDED
 				line-color : #B1B1B1 black 20%
 				line-style : solid
 		draw : fill
-
+		
+	target : *platform
+		define
+			min-zoom : 13
+			line-color : gray
+			fill-color : gray
+			line-width : 3
+		draw : fill
+		
 	target : $featuretype(area)
 		define
 			line-style : none
@@ -474,7 +484,7 @@ rules
 		elseif : farmyard
 			define
 				min-zoom : 10
-				fill-color : #DCBE91 white 25%
+				fill-color : #DDBCB1
 		elseif : fell
 			define
 				min-zoom : 11
@@ -486,19 +496,19 @@ rules
 		elseif : academic
 			define
 				min-zoom : 11
-				fill-color : #F0F0D8
+				fill-color : #F6EEB7
 				line-color : #E5D2CC
 				line-style : solid
 		elseif : kindergarten
 			define
 				min-zoom : 11
-				fill-color : #F0F0D8
+				fill-color : #F6EEB7
 				line-color : #E5D2CC
 				line-style : solid
 		elseif : hospital
 			define
 				min-zoom : 11
-				fill-color : #DDBCB1
+				fill-color : #F6EEB7
 				line-color : #E5D2CC
 				line-style : solid
 		elseif : church
@@ -632,7 +642,13 @@ rules
 				fill-color : #DDECEC
 				line-style : dash
 				line-color : #DDECEC black 10%
-
+		else
+		elseif : bare_rock
+			define
+				min-zoom : 8
+				fill-color : #DDDDDD
+				line-style : dash
+				line-color : #DDDDDD black 10%
 		else
 			stop
 		draw : fill
@@ -682,7 +698,7 @@ rules
 
 	target : $regex("(sports centre)|(stadium)")
 		define
-			min-zoom : 16
+			min-zoom : 13
 			fill-color : #33cc99
 			line-style : none
 			font-size : 12:9;20:15
@@ -746,9 +762,9 @@ rules
 			line-style : dash
 		draw : line
 		define
-			font-size : 10:10;12:15;20:25
+			font-size : 10:10;12:13;20:25
 			text-color : green
-			font-weight : normal
+			//font-weight : normal
 		draw : text
 
 	target : peak
@@ -768,7 +784,20 @@ rules
 			text-offset-vertical : 100%
 			text-align-vertical : near
 		draw : text
-
+		
+	target : cave_entrance
+		define
+			min-zoom : 15
+			text-color : #000000
+			text-offset-vertical : 100%
+			font-size : 12:9;20:15
+		draw : text
+		define
+			icon-image : icons/SJJB/png/poi_cave.n.32.png
+			min-zoom : 14
+			icon-width : 16
+		draw : icon
+		
 	target : info
 		define
 			min-zoom : 16
@@ -778,6 +807,7 @@ rules
 			font-family : Times New Roman
 			text-halo-width : 0
 		draw : text
+		
 	target : lift_gate
 		define
 			min-zoom : 16
@@ -786,6 +816,7 @@ rules
 			shape-size : 14:7;20:12
 			line-width : 1
 		draw : shape
+		
 	target : bollard
 		define
 			min-zoom : 16
@@ -793,6 +824,7 @@ rules
 			line-style : none
 			shape-size : 16:1;18:8
 		draw : shape
+		
 	target : level crossing
 		define
 			min-zoom : 15
@@ -801,6 +833,7 @@ rules
 			shape-size : 14:7;20:12
 			line-width : 1
 		draw : shape
+		
 	target : powertower
 		define
 			min-zoom: 14
@@ -818,6 +851,7 @@ rules
 			shape-size : 16:2;20:5
 			line-width : 1
 		draw : shape
+		
 	target : power_line
 		define
 			min-zoom: 14
@@ -857,6 +891,7 @@ rules
 			line-color:#999
 		draw:line
 		draw:text
+		
 	target:aerialway closed
 		define
 			min-zoom:12
@@ -864,6 +899,7 @@ rules
 			shape-size:1
 			shape-spacing:20
 		draw:shape
+		
 	target:aerialway open
 		define
 			min-zoom:12
@@ -873,12 +909,7 @@ rules
 			shape-size:3
 			line-width:1
 		draw:shape
-	target : platform
-		define
-			min-zoom : 13
-			line-color : gray
-			line-width : 3
-		draw : line
+		
 	target : railway rail
 		define
 			min-zoom : 13
@@ -901,6 +932,7 @@ rules
 			line-color : white black 60%
 			line-width : 6:1;8:1;12:1.5
 		draw : line
+		
 	target : railway*
 		define
 			min-zoom : 13
@@ -975,9 +1007,9 @@ rules
 		
 	target: spring
 		define
-			min-zoom:14
+			min-zoom:13
 			shape:circle
-			shape-size : 15:3;17:5
+			shape-size : 13:1;15:3;17:5
 			line-color : #00f
 			line-width : 15:2;17:2
 			fill-color : white
@@ -1586,7 +1618,7 @@ rules
 			shape : custom
 			shape-def : p:#888;pw:1;m:0,-10;l:0,-4;m:0,4;l:0,10;m:-10,-4;l:10,-4;m:-10,4;l:10,4
 			shape-spacing : 1
-			shape-size : 15:2;19:15
+			shape-size : 15:2;19:5
 			shape-aspect : 3
 		draw : shape
 
@@ -1669,7 +1701,7 @@ rules
 	target : gully
 		define
 			min-zoom : 14
-			line-width: 15:1;17:2
+			line-width: 14:1;15:2
 			line-color: #931900 yellow 20%			
 		draw : line
 		
@@ -2060,6 +2092,7 @@ rules
 	target : gate
 		define
 			min-zoom : 15
+			min-zoom : 15
 			shape : square
 			shape-size : 15:1;17:5
 			line-color : black
@@ -2097,6 +2130,11 @@ rules
 			define
 				icon-image : icons/SJJB/png/tourist_picnic.n.32.png
 				min-zoom : 16
+				icon-width : 16
+		elseif : *zoo
+			define
+				icon-image : icons/SJJB/png/tourist_zoo.n.32.png
+				min-zoom : 13
 				icon-width : 16
 		else
 			stop
