@@ -81,6 +81,7 @@ features
 		leisure garden : leisure=garden
 		leisure pitch : leisure=pitch
 		leisure golf : leisure=golf_course
+		//resort : leisure=resort
 		park : leisure=park
 		academic : node[@isOneOf(amenity, university, college, school)] area[@isOneOf(amenity, university, college, school)]
 		landuse retail : landuse=retail
@@ -88,6 +89,7 @@ features
 		landuse construction : landuse=construction OR landuse=brownfield		
 		commercial area : landuse=commercial
 		residential area : landuse=residential
+		abandoned area : landuse=abandoned OR amenity=abandoned OR leisure=abandoned OR abandoned:leisure OR abandoned:landuse
 		aeroway apron : aeroway=apron
 		aeroway terminal : aeroway=terminal
 		highway pedestrian : (highway=pedestrian OR highway=footway) AND area=yes
@@ -521,6 +523,14 @@ rules
 			define
 				min-zoom : 9
 				fill-color : #DEDEC4
+		elseif : abandoned area
+			define
+				min-zoom : 11
+				fill-color : #DEDEC4
+				fill-opacity : 0
+				fill-hatch : horizontal
+				fill-hatch-color : #DEDEC4
+				fill-hatch-opacity : 0.7
 		elseif : grass
 			define
 				min-zoom : 11
@@ -552,6 +562,11 @@ rules
 		elseif : park
 			define
 				min-zoom : 11
+				fill-color : #C0F6B0
+				font-size : 12:9;20:15
+		elseif : resort
+			define
+				min-zoom : 12
 				fill-color : #C0F6B0
 				font-size : 12:9;20:15
 		elseif : leisure garden
@@ -675,6 +690,12 @@ rules
 		elseif : park
 			define 
 				min-zoom:17	
+		elseif : resort
+			define 
+				min-zoom:13
+		elseif : abandoned area
+			define 
+				min-zoom:13	
 		elseif : water
 			define 
 				text-color : #009FDE
@@ -871,17 +892,6 @@ rules
 			shape-def : pw:1;p:black;f:black;m:-5,0;l:-5,80,-10,80,-10,85,-5,85,-5,90,-10,90,-10,95,-5,95,-5,100,5,100,5,95,10,95,10,90,5,90,5,85,10,85,10,80,5,80,5,0;z
 			shape-size : 15:30;17:40;19:100
 		draw : shape
-		
-	target : resort
-		define
-			min-zoom : 12
-			line-style : none
-			fill-color : #C0F6B0
-		draw : fill
-		define
-			min-zoom : 13		
-			font-size : 12:9;20:15
-		draw : text
 		
 	target:aerialway *
 		define

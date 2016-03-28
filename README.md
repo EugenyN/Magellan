@@ -6,7 +6,7 @@ The ruleset was developed for using with the Magellan Triton / Explorist GPS for
 
 ## Features
 
-* Support for the latest and rare OSM tags: `natural=gully`, `natural=earth_bank`, `natural=valley`, `waterway=drystream`, `leisure=resort`, `amenity=social_facility`, `exit=no` and `fixme=continue` at the end of the road, `drinking_water=yes/no` for springs.
+* Support for the latest and rare OSM tags: `natural=gully`, `natural=earth_bank`, `natural=valley`, `waterway=drystream`, `leisure=resort`, `amenity=social_facility`, `landuse=abandoned`, `abandoned:*`, `exit=no` and `fixme=continue` at the end of the road, `drinking_water=yes/no` for springs.
 * The high contrast, increased lines and font thickness for convenient outdoor use in GPS.
 * Color scheme is based on the original style of Magellan GPS vector maps.
 
