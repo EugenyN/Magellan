@@ -46,7 +46,6 @@ features
 		memorial : historic=memorial
 		archaeological_site : historic=archaeological_site
 		tower : man_made=tower OR man_made=water_tower
-		resort : leisure=resort
 
 	areas	
 		beach : natural=beach
@@ -81,7 +80,7 @@ features
 		leisure garden : leisure=garden
 		leisure pitch : leisure=pitch
 		leisure golf : leisure=golf_course
-		//resort : leisure=resort
+		resort : leisure=resort
 		park : leisure=park
 		academic : node[@isOneOf(amenity, university, college, school)] area[@isOneOf(amenity, university, college, school)]
 		landuse retail : landuse=retail
@@ -194,6 +193,7 @@ features
 		noexit : noexit=yes
 		fixme_continue : fixme=continue
 		spring : natural=spring
+		resort_point : leisure=resort
 		//spring_drinkingwater : amenity=drinking_water OR drinking_water=yes
 		
 		gps waypoints : gpswaypoint[]
@@ -563,12 +563,10 @@ rules
 			define
 				min-zoom : 11
 				fill-color : #C0F6B0
-				font-size : 12:9;20:15
 		elseif : resort
 			define
 				min-zoom : 12
 				fill-color : #C0F6B0
-				font-size : 12:9;20:15
 		elseif : leisure garden
 			define
 				min-zoom : 11	
@@ -657,7 +655,6 @@ rules
 				fill-color : #DDECEC
 				line-style : dash
 				line-color : #DDECEC black 10%
-		else
 		elseif : bare_rock
 			define
 				min-zoom : 8
@@ -670,7 +667,7 @@ rules
 		
 		define
 			min-zoom : 15
-			font-size : 12:10;15:13
+			font-size : 12:10;17:13
 		
 		if : academic
 			define
@@ -711,7 +708,6 @@ rules
 		elseif : allotments
 			define 
 				min-zoom:13
-				//font-size : 13:12;20:20
 				placement-value : 1
 		else
 			stop
@@ -1030,6 +1026,12 @@ rules
 			define
 				fill-color : red
 		draw : shape
+		
+	target: resort_point
+		define
+			min-zoom : 13
+			font-size : 12:10;17:13
+		draw : text
 		
 	target : highway*
 		define
