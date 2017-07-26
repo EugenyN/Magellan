@@ -6,7 +6,10 @@
 // Released under the Creative Commons Attribution-ShareAlike 3.0 License (http://creativecommons.org/licenses/by-sa/3.0/)
 // Icons used: Map icons CC-0 from SJJB Management (http://www.sjjb.co.uk/mapicons)
 
-// version 24/02/2016
+// version 30/06/2017
+
+// recommended zooms 11, 12, 13, 15, and opt. 17 (for cartography)
+// don't forget clear the tiles cache.
 
 features
 	points, areas
@@ -201,6 +204,9 @@ features
 		gps routepoints: gpsroute[].gpspoint[]
 
 properties
+	// name priority on labels
+	//text : @any([[name:en]], int_name, name)
+	
 	map-background-color	: #F1EEE8
 	map-background-opacity	: 1
 	map-sea-color : #B5D0D0
@@ -275,17 +281,17 @@ rules
 					placement-value : 1000
 			elseif : *town
 				define
-					font-size : 9:12;12:15;20:25
+					font-size : 9:12;12:15;13:19;20:25
 					min-zoom : 8
 					placement-value : 20
 			elseif : *village
 				define
-					font-size : 9:9;10:11;12:13;20:25
+					font-size : 9:9;10:12;11:14;13:17;20:25
 					min-zoom : 9
 					placement-value : 1
 			elseif : *hamlet
 				define
-					font-size : 10:11;12:12;20:20
+					font-size : 11:13;12:13;13:15;20:20
 					min-zoom : 11
 					placement-value : 1
 			elseif : *locality
@@ -295,12 +301,12 @@ rules
 					placement-value : 1
 			elseif : *isolated_dwelling
 				define
-					font-size : 10:11;12:12;20:20
+					font-size : 12:13;20:20
 					min-zoom : 12	
 					placement-value : 1
 			elseif : *suburb
 				define
-					font-size : 12:12;20:20
+					font-size : 12:13;20:20
 					min-zoom : 12
 					text-color : white black 60%
 					placement-value : 10
@@ -667,7 +673,7 @@ rules
 		
 		define
 			min-zoom : 15
-			font-size : 12:10;17:13
+			font-size : 12:11;17:13
 		
 		if : academic
 			define
@@ -1000,7 +1006,7 @@ rules
 			min-zoom : 15
 			fill-color : black
 			line-style : none
-			shape-size : 15:3;18:6
+			shape-size : 15:4;18:6
 		draw : shape
 		
 	target: fixme_continue
@@ -1008,16 +1014,16 @@ rules
 			min-zoom : 15
 			fill-color : red
 			line-style : none
-			shape-size : 15:3;18:6
+			shape-size : 15:4;18:6
 		draw : shape
 		
 	target: spring
 		define
 			min-zoom:13
 			shape:circle
-			shape-size : 13:1;15:3;17:5
+			shape-size : 13:1;15:4;17:5
 			line-color : #00f
-			line-width : 15:2;17:2
+			line-width : 15:3;17:4
 			fill-color : white
 		for : drinking_water=yes
 			define
@@ -1035,7 +1041,7 @@ rules
 		
 	target : highway*
 		define
-			font-size : 15:10;18:13
+			font-size : 15:11;18:13
 			//font-weight : bold
 
 		for : oneway=yes OR oneway=true
@@ -1125,7 +1131,7 @@ rules
 				line-width : 7:2;11:3;13:3;15:10;18:12
 				border-style : solid
 				border-color : black
-				border-width : 13:40%;15:25%
+				border-width : 13:60%;15:25%
 //			for : oneway=yes
 //				define
 //					line-width : 11:1.5;12:1.5;15:7;18:12;19:24
@@ -1182,7 +1188,7 @@ rules
 				line-width : 7:2;11:3;12:3;15:10;18:12
 				border-style : solid
 				border-color : black
-				border-width : 13:40%;15:25%
+				border-width : 13:60%;15:25%
 //			for : oneway=yes
 //				define
 //					line-width : 11:1.5;12:1.5;15:7;18:12;19:24
@@ -1241,7 +1247,7 @@ rules
 				line-width : 8:1.5;10:2;11:3;13:3;15:10;18:12
 				border-style : solid
 				border-color : black
-				border-width : 13:40%;15:25%
+				border-width : 11:60%;13:60%;15:25%
 //			for : oneway=yes
 //				define
 //					line-width : 11:1.5;12:1.5;15:7;18:12;19:24
@@ -1301,7 +1307,7 @@ rules
 				line-width : 10:2;13:3;15:7;18:12
 				border-style : solid
 				border-color : black
-				border-width : 13:40%;15:25%
+				border-width : 11:60%;13:60%;15:25%
 //			for : oneway=yes
 //				define
 //					line-width : 10:2;12:2;15:7;18:10;19:21
@@ -1331,7 +1337,7 @@ rules
 			define
 				min-zoom : 14
 				line-color : white
-				line-width : 13:1.5;15:2;18:5
+				line-width : 13:2.4;15:3;18:5
 				border-style : solid
 				border-color : black
 				border-width : 13:0%; 15:50%; 17:40%
@@ -1352,7 +1358,7 @@ rules
 			for : bridge
 				define
 					border-color : #000
-					border-width : 25%
+					border-width : 30%
 			draw : line
 			define
 				min-zoom : 15
@@ -1371,7 +1377,7 @@ rules
 					line-width : 10:1;13:2;15:5;18:13
 					border-style : solid
 					border-color : black
-					border-width : 13:40%; 15:25%
+					border-width : 13:60%; 15:25%
 				for : tunnel=yes
 					define
 						border-style : dot
@@ -1391,15 +1397,15 @@ rules
 			define
 				min-zoom : 13
 				line-color : white
-				line-width : 10:1;13:2;15:5;18:13
+				line-width : 10:1;11:2;12:2;15:5;18:13
 				line-style : solid
 				border-style : solid
 				border-color : black
-				border-width : 13:40%; 15:25%
+				border-width : 13:60%; 15:30%
 			for : (oneway=yes) OR (lanes<2) OR (width<3)
 				define
 					line-width : 13:1;15:4;18:10;19:20
-					border-width : 13:40%; 15:25%
+					border-width : 13:40%; 15:30%
 			for : @isMatch (surface,"unpaved|gravel|sand|earth|ground|grass")
 				define
 					border-style: dash 
@@ -1433,7 +1439,7 @@ rules
 				line-style : dot
 				border-style : solid
 				border-color : black
-				border-width : 13:40%; 15:25%
+				border-width : 13:40%; 15:30%
 			for : tunnel=yes
 				define
 					border-style : dot
@@ -1453,7 +1459,7 @@ rules
 				line-style : solid
 				border-style : solid
 				border-color : black
-				border-width : 13:40%; 15:25%
+				border-width : 13:40%; 15:30%
 			for : tunnel=yes
 				define
 					border-style : dot
@@ -1469,7 +1475,7 @@ rules
 			define
 				min-zoom : 12
 				line-color : black
-				line-width : 12:1;13:1.7;15:2;18:3
+				line-width : 12:1.5;13:2.4;15:3;18:3
 				line-style : dash
 				border-style : solid
 				border-color : white
@@ -1515,9 +1521,9 @@ rules
 		elseif : *footway
 			for : NOT area
 				define
-					min-zoom : 14
+					min-zoom : 13
 					line-color : red
-					line-width : 13:2;15:2;18:3
+					line-width : 13:2.4;15:3;18:3
 					line-style : dot
 					border-style : solid
 					border-color : white
@@ -1529,18 +1535,12 @@ rules
 
 				draw : line
 				draw : text
-				define
-					min-zoom : 12
-					max-zoom : 14
-					line-width : 12:1;13:1.5
-					line-style : solid
-				draw : line
-			
+				
 		elseif : *cycleway
 			define
 				min-zoom : 13
 				line-color : blue
-				line-width : 13:2;15:2;18:3
+				line-width : 13:2.4;15:3;18:3
 				line-style : dot
 				border-style : solid
 				border-color : white
@@ -1555,18 +1555,12 @@ rules
 					border-opacity : 1
 			draw : line
 			draw : text
-			define
-				min-zoom : 12
-				max-zoom : 14
-				line-width : 12:1;13:1.5
-				line-style : solid
-			draw : line
 			
 		elseif : *path
 			define
-				min-zoom : 14
+				min-zoom : 13
 				line-color : black
-				line-width : 13:2;15:2;18:3
+				line-width : 13:2.4;15:3;18:3
 				line-style : dot
 				border-style : solid
 				border-color : white
@@ -1578,12 +1572,6 @@ rules
 
 			draw : line
 			draw : text
-			define
-				min-zoom : 12
-				max-zoom : 14
-				line-width : 12:1;13:1.5
-				line-style : solid
-			draw : line
 		else
 			stop
 
@@ -1601,7 +1589,7 @@ rules
 		define
 			min-zoom : 15
 			//line-color : red
-			//line-width : 13:1.5;15:2;18:3
+			//line-width : 13:2.4;15:3;18:3
 			line-style : dot	
 			line-opacity : 0			
 			border-style : solid
@@ -1756,7 +1744,7 @@ rules
 		define
 			min-zoom:11
 			line-color : #009FDE
-			line-width : 11:1;13:2;15:3
+			line-width : 11:1;12:1.7;13:2;15:3
 		for : intermittent=yes
 			define
 				line-style: dash
@@ -1772,7 +1760,7 @@ rules
 		
 	target : drystream
 		define
-			min-zoom:12
+			min-zoom:13
 			line-color : #FDD6A4
 			line-width : 13:2;15:3
 			line-style: dash
@@ -1794,7 +1782,7 @@ rules
 		//draw : line
 		define
 			min-zoom:13
-			font-size:13:10;16:15
+			font-size:13:11;16:15
 			font-style : italic
 			font-weight : bold
 			text-color : black
@@ -1815,7 +1803,7 @@ rules
 
 	target : drain
 		define
-			min-zoom : 11
+			min-zoom : 12
 			line-width : 11:1;13:2;15:3
 			line-color : #009FDE
 		draw : line
